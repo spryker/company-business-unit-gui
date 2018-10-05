@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyBusinessUnit;
+namespace Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUser;
 
 use Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTableConfigExpanderPluginInterface;
 use Spryker\Zed\Gui\Communication\Table\TableConfiguration;
