@@ -7,8 +7,9 @@
 
 namespace Spryker\Zed\CompanyBusinessUnitGui\Communication\Form;
 
-use Spryker\Zed\Gui\Communication\Form\Type\SelectType;
+use Spryker\Zed\Gui\Communication\Form\Type\Select2ComboBoxType;
 use Spryker\Zed\Kernel\Communication\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -16,28 +17,26 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
- * @deprecated Use {@link \Spryker\Zed\CompanyBusinessUnitGui\Communication\Form\CompanyBusinessUnitToCompanyUserForm} instead.
- *
  * @method \Spryker\Zed\CompanyBusinessUnitGui\CompanyBusinessUnitGuiConfig getConfig()
  * @method \Spryker\Zed\CompanyBusinessUnitGui\Business\CompanyBusinessUnitGuiFacadeInterface getFacade()
  * @method \Spryker\Zed\CompanyBusinessUnitGui\Communication\CompanyBusinessUnitGuiCommunicationFactory getFactory()
  */
-class CompanyUserBusinessUnitForm extends AbstractType
+class CompanyBusinessUnitToCustomerBusinessUnitAttachForm extends AbstractType
 {
     /**
      * @var string
      */
-    public const OPTION_VALUES_BUSINESS_UNITS_CHOICES = 'company_business_unit_choices';
+    protected const OPTION_COMPANY_BUSINESS_UNIT_CHOICES = 'company_business_unit_choices';
 
     /**
      * @var string
      */
-    public const OPTION_ATTRIBUTES_BUSINESS_UNITS_CHOICES = 'company_business_unit_attributes';
+    protected const FIELD_FK_COMPANY_BUSINESS_UNIT = 'fk_company_business_unit';
 
     /**
      * @var string
      */
-    public const FIELD_FK_COMPANY_BUSINESS_UNIT = 'fk_company_business_unit';
+    protected const FIELD_FK_COMPANY = 'fk_company';
 
     /**
      * @uses \Spryker\Zed\CompanyBusinessUnitGui\Communication\Controller\SuggestController::indexAction()
@@ -47,9 +46,14 @@ class CompanyUserBusinessUnitForm extends AbstractType
     protected const ROUTE_SUGGEST = '/company-business-unit-gui/suggest';
 
     /**
-     * @var string
+     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
+     *
+     * @return void
      */
-    protected const TEMPLATE_PATH = '@CompanyBusinessUnitGui/CompanyUser/company_business_unit.twig';
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setRequired(static::OPTION_COMPANY_BUSINESS_UNIT_CHOICES);
+    }
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
@@ -59,47 +63,10 @@ class CompanyUserBusinessUnitForm extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $this->addCompanyBusinessUnitCollectionField($builder, $options);
+        $this->addFkCompanyBusinessUnitField($builder, $options)
+            ->addFkCompanyField($builder);
 
         $this->addPreSubmitEventListener($builder);
-    }
-
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        parent::configureOptions($resolver);
-
-        $resolver->setRequired(static::OPTION_VALUES_BUSINESS_UNITS_CHOICES);
-        $resolver->setRequired(static::OPTION_ATTRIBUTES_BUSINESS_UNITS_CHOICES);
-    }
-
-    /**
-     * @param \Symfony\Component\Form\FormEvent $formEvent
-     *
-     * @return void
-     */
-    public function companyBusinessUnitSearchPreSubmitHandler(FormEvent $formEvent): void
-    {
-        $data = $formEvent->getData();
-        $form = $formEvent->getForm();
-
-        if (!isset($data[static::FIELD_FK_COMPANY_BUSINESS_UNIT])) {
-            return;
-        }
-
-        $companyBusinessUnitChoices = $this->getFactory()
-            ->createCompanyUserBusinessUnitFormDataProvider()
-            ->getOptions($data[static::FIELD_FK_COMPANY_BUSINESS_UNIT]);
-
-        $form->add(
-            static::FIELD_FK_COMPANY_BUSINESS_UNIT,
-            SelectType::class,
-            $this->getCompanyBusinessUnitFieldParameters($companyBusinessUnitChoices),
-        );
     }
 
     /**
@@ -115,28 +82,53 @@ class CompanyUserBusinessUnitForm extends AbstractType
     }
 
     /**
+     * @param \Symfony\Component\Form\FormEvent $formEvent
+     *
+     * @return void
+     */
+    protected function companyBusinessUnitSearchPreSubmitHandler(FormEvent $formEvent): void
+    {
+        $data = $formEvent->getData();
+        $form = $formEvent->getForm();
+
+        if (!isset($data[static::FIELD_FK_COMPANY_BUSINESS_UNIT])) {
+            return;
+        }
+
+        $companyBusinessUnitChoices = $this->getFactory()
+            ->createCompanyBusinessUnitToCustomerBusinessUnitAttachFormDataProvider()
+            ->getCompanyBusinessUnitChoices($data[static::FIELD_FK_COMPANY_BUSINESS_UNIT]);
+
+        $form->add(
+            static::FIELD_FK_COMPANY_BUSINESS_UNIT,
+            Select2ComboBoxType::class,
+            $this->getCompanyBusinessUnitFieldParameters($companyBusinessUnitChoices),
+        );
+    }
+
+    /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
      * @param array<string, mixed> $options
      *
      * @return $this
      */
-    protected function addCompanyBusinessUnitCollectionField(FormBuilderInterface $builder, array $options)
+    protected function addFkCompanyBusinessUnitField(FormBuilderInterface $builder, array $options)
     {
         $builder->add(
             static::FIELD_FK_COMPANY_BUSINESS_UNIT,
-            SelectType::class,
-            $this->getCompanyBusinessUnitFieldParameters($options),
+            Select2ComboBoxType::class,
+            $this->getCompanyBusinessUnitFieldParameters($options[static::OPTION_COMPANY_BUSINESS_UNIT_CHOICES]),
         );
 
         return $this;
     }
 
     /**
-     * @param array $companyBusinessUnitChoices
+     * @param array<string, int> $companyBusinessUnitChoices
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function getCompanyBusinessUnitFieldParameters(array $companyBusinessUnitChoices = []): array
+    protected function getCompanyBusinessUnitFieldParameters(array $companyBusinessUnitChoices): array
     {
         return [
             'label' => 'Business Unit',
@@ -147,17 +139,23 @@ class CompanyUserBusinessUnitForm extends AbstractType
                 new NotBlank(),
             ],
             'attr' => [
-                'template_path' => $this->getTemplatePath(),
+                'data-depends-on-field' => '#customer_business_unit_attach_fk_company',
+                'data-dependent-autocomplete-key' => 'idCompany',
+                'data-minimum-input-length' => 2,
+                'data-autocomplete-url' => static::ROUTE_SUGGEST,
             ],
-            'url' => static::ROUTE_SUGGEST,
         ];
     }
 
     /**
-     * @return string
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return $this
      */
-    protected function getTemplatePath(): string
+    protected function addFkCompanyField(FormBuilderInterface $builder)
     {
-        return static::TEMPLATE_PATH;
+        $builder->add(static::FIELD_FK_COMPANY, HiddenType::class);
+
+        return $this;
     }
 }

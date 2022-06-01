@@ -7,22 +7,20 @@
 
 namespace Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui;
 
-use Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserAttachCustomerFormExpanderPluginInterface;
+use Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserFormExpanderPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * @deprecated Use {@link \Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitToCompanyUserAttachCustomerFormExpanderPlugin} instead.
- *
  * @method \Spryker\Zed\CompanyBusinessUnitGui\Communication\CompanyBusinessUnitGuiCommunicationFactory getFactory()
  * @method \Spryker\Zed\CompanyBusinessUnitGui\Business\CompanyBusinessUnitGuiFacadeInterface getFacade()
  * @method \Spryker\Zed\CompanyBusinessUnitGui\CompanyBusinessUnitGuiConfig getConfig()
  */
-class CompanyBusinessUnitAttachCustomerFormExpanderPlugin extends AbstractPlugin implements CompanyUserAttachCustomerFormExpanderPluginInterface
+class CompanyBusinessUnitToCompanyUserFormExpanderPlugin extends AbstractPlugin implements CompanyUserFormExpanderPluginInterface
 {
     /**
      * {@inheritDoc}
-     *  - Expands CustomerCompanyAttachForm with choice field of company business units form CompanyUserBusinessUnitChoiceFormType.
+     * - Expands `CompanyUserForm` with a `fk_company_business_unit` form field as an input box with AJAX search and suggestions.
      *
      * @api
      *
@@ -32,17 +30,8 @@ class CompanyBusinessUnitAttachCustomerFormExpanderPlugin extends AbstractPlugin
      */
     public function expand(FormBuilderInterface $builder): FormBuilderInterface
     {
-        $formType = $this->getFactory()
-            ->createCompanyUserBusinessUnitForm();
-
-        $dataProvider = $this->getFactory()
-            ->createCompanyUserBusinessUnitFormDataProvider();
-
-        $formType->buildForm(
-            $builder,
-            $dataProvider->getOptions(),
-        );
-
-        return $builder;
+        return $this->getFactory()
+            ->createCompanyBusinessUnitToCompanyUserFormExpander()
+            ->expand($builder);
     }
 }
