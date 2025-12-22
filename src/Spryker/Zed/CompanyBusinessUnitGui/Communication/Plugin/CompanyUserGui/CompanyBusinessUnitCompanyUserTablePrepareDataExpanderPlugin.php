@@ -12,6 +12,8 @@ use Spryker\Zed\CompanyUserGuiExtension\Dependency\Plugin\CompanyUserTablePrepar
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
+ * @deprecated Use {@link \Spryker\Zed\CompanyBusinessUnitGui\Communication\Plugin\CompanyUserGui\CompanyBusinessUnitCompanyUserTableBulkDataExpanderPlugin} instead.
+ *
  * @method \Spryker\Zed\CompanyBusinessUnitGui\Business\CompanyBusinessUnitGuiFacadeInterface getFacade()
  * @method \Spryker\Zed\CompanyBusinessUnitGui\Communication\CompanyBusinessUnitGuiCommunicationFactory getFactory()
  * @method \Spryker\Zed\CompanyBusinessUnitGui\CompanyBusinessUnitGuiConfig getConfig()

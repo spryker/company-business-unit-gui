@@ -9,6 +9,8 @@ namespace Spryker\Zed\CompanyBusinessUnitGui\Business;
 
 use Spryker\Zed\CompanyBusinessUnitGui\Business\CompanyBusinessUnit\CompanyBusinessUnitGuiReader;
 use Spryker\Zed\CompanyBusinessUnitGui\Business\CompanyBusinessUnit\CompanyBusinessUnitGuiReaderInterface;
+use Spryker\Zed\CompanyBusinessUnitGui\Business\CompanyUserTable\CompanyUserTableDataExpander;
+use Spryker\Zed\CompanyBusinessUnitGui\Business\CompanyUserTable\CompanyUserTableDataExpanderInterface;
 use Spryker\Zed\CompanyBusinessUnitGui\CompanyBusinessUnitGuiDependencyProvider;
 use Spryker\Zed\CompanyBusinessUnitGui\Dependency\Facade\CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
@@ -26,6 +28,11 @@ class CompanyBusinessUnitGuiBusinessFactory extends AbstractBusinessFactory
         return new CompanyBusinessUnitGuiReader(
             $this->getCompanyBusinessUnitFacade(),
         );
+    }
+
+    public function createCompanyUserTableDataExpander(): CompanyUserTableDataExpanderInterface
+    {
+        return new CompanyUserTableDataExpander($this->getCompanyBusinessUnitFacade());
     }
 
     /**

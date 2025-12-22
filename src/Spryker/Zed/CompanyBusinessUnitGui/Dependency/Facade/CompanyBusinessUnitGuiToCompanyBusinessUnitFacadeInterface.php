@@ -65,4 +65,11 @@ interface CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeInterface
      * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer|null
      */
     public function findCompanyBusinessUnitById(int $idCompanyBusinessUnit): ?CompanyBusinessUnitTransfer;
+
+    /**
+     * @param list<int> $companyUserIds
+     *
+     * @return array<int, string>
+     */
+    public function getCompanyBusinessUnitNamesIndexedByCompanyUserIds(array $companyUserIds): array;
 }

@@ -92,4 +92,14 @@ class CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeBridge implements Company
     {
         return $this->companyBusinessUnitFacade->findCompanyBusinessUnitById($idCompanyBusinessUnit);
     }
+
+    /**
+     * @param list<int> $companyUserIds
+     *
+     * @return array<int, string>
+     */
+    public function getCompanyBusinessUnitNamesIndexedByCompanyUserIds(array $companyUserIds): array
+    {
+        return $this->companyBusinessUnitFacade->getCompanyBusinessUnitNamesIndexedByCompanyUserIds($companyUserIds);
+    }
 }
