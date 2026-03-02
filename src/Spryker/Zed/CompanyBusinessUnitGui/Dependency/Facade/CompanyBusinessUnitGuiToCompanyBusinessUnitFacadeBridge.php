@@ -27,55 +27,30 @@ class CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeBridge implements Company
         $this->companyBusinessUnitFacade = $companyBusinessUnitFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer
-     */
     public function getCompanyBusinessUnitById(
         CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
     ): CompanyBusinessUnitTransfer {
         return $this->companyBusinessUnitFacade->getCompanyBusinessUnitById($companyBusinessUnitTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitResponseTransfer
-     */
     public function update(
         CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
     ): CompanyBusinessUnitResponseTransfer {
         return $this->companyBusinessUnitFacade->update($companyBusinessUnitTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitResponseTransfer
-     */
     public function create(
         CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
     ): CompanyBusinessUnitResponseTransfer {
         return $this->companyBusinessUnitFacade->create($companyBusinessUnitTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitResponseTransfer
-     */
     public function delete(
         CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
     ): CompanyBusinessUnitResponseTransfer {
         return $this->companyBusinessUnitFacade->delete($companyBusinessUnitTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyBusinessUnitCriteriaFilterTransfer $companyBusinessUnitCriteriaFilterTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitCollectionTransfer
-     */
     public function getCompanyBusinessUnitCollection(
         CompanyBusinessUnitCriteriaFilterTransfer $companyBusinessUnitCriteriaFilterTransfer
     ): CompanyBusinessUnitCollectionTransfer {
@@ -83,11 +58,6 @@ class CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeBridge implements Company
             ->getCompanyBusinessUnitCollection($companyBusinessUnitCriteriaFilterTransfer);
     }
 
-    /**
-     * @param int $idCompanyBusinessUnit
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer|null
-     */
     public function findCompanyBusinessUnitById(int $idCompanyBusinessUnit): ?CompanyBusinessUnitTransfer
     {
         return $this->companyBusinessUnitFacade->findCompanyBusinessUnitById($idCompanyBusinessUnit);

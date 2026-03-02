@@ -30,10 +30,6 @@ class CompanyBusinessUnitFormDataProvider
      */
     protected $companyFacade;
 
-    /**
-     * @param \Spryker\Zed\CompanyBusinessUnitGui\Dependency\Facade\CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeInterface $companyBusinessUnitFacade
-     * @param \Spryker\Zed\CompanyBusinessUnitGui\Dependency\Facade\CompanyBusinessUnitGuiToCompanyFacadeInterface $companyFacade
-     */
     public function __construct(
         CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeInterface $companyBusinessUnitFacade,
         CompanyBusinessUnitGuiToCompanyFacadeInterface $companyFacade
@@ -42,11 +38,6 @@ class CompanyBusinessUnitFormDataProvider
         $this->companyFacade = $companyFacade;
     }
 
-    /**
-     * @param int|null $idCompanyBusinessUnit
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer
-     */
     public function getData(?int $idCompanyBusinessUnit = null): CompanyBusinessUnitTransfer
     {
         return $this->createCompanyBusinessUnitTransfer($idCompanyBusinessUnit);
@@ -87,11 +78,6 @@ class CompanyBusinessUnitFormDataProvider
         return $result;
     }
 
-    /**
-     * @param int|null $idCompanyBusinessUnit
-     *
-     * @return \Generated\Shared\Transfer\CompanyBusinessUnitTransfer
-     */
     protected function createCompanyBusinessUnitTransfer(?int $idCompanyBusinessUnit = null): CompanyBusinessUnitTransfer
     {
         $companyBusinessUnitTransfer = new CompanyBusinessUnitTransfer();

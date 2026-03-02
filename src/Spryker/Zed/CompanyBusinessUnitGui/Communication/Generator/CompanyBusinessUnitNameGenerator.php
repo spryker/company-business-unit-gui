@@ -16,11 +16,6 @@ class CompanyBusinessUnitNameGenerator implements CompanyBusinessUnitNameGenerat
      */
     protected const NAME_PATTERN = '%s (id: %s) | %s';
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
-     *
-     * @return string
-     */
     public function generateName(CompanyBusinessUnitTransfer $companyBusinessUnitTransfer): string
     {
         return sprintf(

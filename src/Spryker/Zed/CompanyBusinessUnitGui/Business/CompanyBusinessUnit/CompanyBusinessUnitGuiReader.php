@@ -17,19 +17,11 @@ class CompanyBusinessUnitGuiReader implements CompanyBusinessUnitGuiReaderInterf
      */
     protected $businessUnitFacade;
 
-    /**
-     * @param \Spryker\Zed\CompanyBusinessUnitGui\Dependency\Facade\CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeInterface $businessUnitFacade
-     */
     public function __construct(CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeInterface $businessUnitFacade)
     {
         $this->businessUnitFacade = $businessUnitFacade;
     }
 
-    /**
-     * @param int $idCompanyUser
-     *
-     * @return string|null
-     */
     public function findCompanyBusinessUnitNameByIdCompanyUser(int $idCompanyUser): ?string
     {
         $companyBusinessUnitName = null;

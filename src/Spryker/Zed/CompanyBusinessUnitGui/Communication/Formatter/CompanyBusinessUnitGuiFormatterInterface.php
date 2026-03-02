@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\CompanyBusinessUnitCollectionTransfer;
 
 interface CompanyBusinessUnitGuiFormatterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CompanyBusinessUnitCollectionTransfer $companyBusinessUnitCollectionTransfer
-     *
-     * @return array
-     */
     public function formatCompanyBusinessUnitCollectionToSuggestions(CompanyBusinessUnitCollectionTransfer $companyBusinessUnitCollectionTransfer): array;
 }

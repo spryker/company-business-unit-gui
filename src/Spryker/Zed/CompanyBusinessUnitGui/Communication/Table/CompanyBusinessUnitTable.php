@@ -82,9 +82,6 @@ class CompanyBusinessUnitTable extends AbstractTable
      */
     protected $companyBusinessUnitQuery;
 
-    /**
-     * @param \Orm\Zed\CompanyBusinessUnit\Persistence\SpyCompanyBusinessUnitQuery $companyBusinessUnitQuery
-     */
     public function __construct(SpyCompanyBusinessUnitQuery $companyBusinessUnitQuery)
     {
         $companyBusinessUnitQuery->leftJoinCompany();
@@ -92,11 +89,6 @@ class CompanyBusinessUnitTable extends AbstractTable
         $this->companyBusinessUnitQuery = $companyBusinessUnitQuery;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config->setHeader([
@@ -130,11 +122,6 @@ class CompanyBusinessUnitTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $queryResults = $this->runQuery($this->companyBusinessUnitQuery, $config, true);
@@ -160,11 +147,6 @@ class CompanyBusinessUnitTable extends AbstractTable
         return $results;
     }
 
-    /**
-     * @param \Orm\Zed\CompanyBusinessUnit\Persistence\SpyCompanyBusinessUnit $spyCompanyBusinessUnit
-     *
-     * @return string
-     */
     protected function formatAddress(SpyCompanyBusinessUnit $spyCompanyBusinessUnit): string
     {
         $result = '';
@@ -192,11 +174,6 @@ class CompanyBusinessUnitTable extends AbstractTable
         return $result;
     }
 
-    /**
-     * @param \Orm\Zed\CompanyBusinessUnit\Persistence\SpyCompanyBusinessUnit $spyCompanyBusinessUnit
-     *
-     * @return string
-     */
     protected function buildLinks(SpyCompanyBusinessUnit $spyCompanyBusinessUnit): string
     {
         $buttons = [];

@@ -72,9 +72,6 @@ class CompanyBusinessUnitForm extends AbstractType
      */
     protected const FIELD_PHONE = 'phone';
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return 'company-business-unit';
@@ -135,9 +132,6 @@ class CompanyBusinessUnitForm extends AbstractType
         return $this;
     }
 
-    /**
-     * @return \Closure
-     */
     protected function getParentCompanyBusinessUnitFieldPreSubmitCallback(): Closure
     {
         return function (FormEvent $formEvent) {
@@ -233,9 +227,6 @@ class CompanyBusinessUnitForm extends AbstractType
         return $this;
     }
 
-    /**
-     * @return array
-     */
     protected function getTextFieldConstraints(): array
     {
         return [

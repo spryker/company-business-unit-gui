@@ -45,11 +45,6 @@ class SuggestController extends AbstractController
      */
     protected const PARAM_COMPANY_IDS = 'idsCompany';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function indexAction(Request $request): JsonResponse
     {
         $response = $this->executeIndexAction($request);
@@ -57,11 +52,6 @@ class SuggestController extends AbstractController
         return $this->jsonResponse($response);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return array
-     */
     protected function executeIndexAction(Request $request): array
     {
         $companyBusinessUnitCriteriaFilterTransfer = $this->createCompanyBusinessUnitCriteriaFilterTransfer($request);

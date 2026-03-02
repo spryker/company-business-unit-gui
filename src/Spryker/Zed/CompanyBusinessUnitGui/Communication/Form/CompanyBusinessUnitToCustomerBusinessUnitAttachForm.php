@@ -45,11 +45,6 @@ class CompanyBusinessUnitToCustomerBusinessUnitAttachForm extends AbstractType
      */
     protected const ROUTE_SUGGEST = '/company-business-unit-gui/suggest';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired(static::OPTION_COMPANY_BUSINESS_UNIT_CHOICES);
@@ -69,11 +64,6 @@ class CompanyBusinessUnitToCustomerBusinessUnitAttachForm extends AbstractType
         $this->addPreSubmitEventListener($builder);
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return void
-     */
     protected function addPreSubmitEventListener(FormBuilderInterface $builder): void
     {
         $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $formEvent): void {
@@ -81,11 +71,6 @@ class CompanyBusinessUnitToCustomerBusinessUnitAttachForm extends AbstractType
         });
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormEvent $formEvent
-     *
-     * @return void
-     */
     protected function companyBusinessUnitSearchPreSubmitHandler(FormEvent $formEvent): void
     {
         $data = $formEvent->getData();

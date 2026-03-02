@@ -28,19 +28,11 @@ class CompanyBusinessUnitGuiFormatter implements CompanyBusinessUnitGuiFormatter
      */
     protected $companyBusinessUnitNameGenerator;
 
-    /**
-     * @param \Spryker\Zed\CompanyBusinessUnitGui\Communication\Generator\CompanyBusinessUnitNameGeneratorInterface $generator
-     */
     public function __construct(CompanyBusinessUnitNameGeneratorInterface $generator)
     {
         $this->companyBusinessUnitNameGenerator = $generator;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyBusinessUnitCollectionTransfer $companyBusinessUnitCollectionTransfer
-     *
-     * @return array
-     */
     public function formatCompanyBusinessUnitCollectionToSuggestions(CompanyBusinessUnitCollectionTransfer $companyBusinessUnitCollectionTransfer): array
     {
         $formattedSuggestCompanyBusinessUnits = [];
@@ -55,11 +47,6 @@ class CompanyBusinessUnitGuiFormatter implements CompanyBusinessUnitGuiFormatter
         return $formattedSuggestCompanyBusinessUnits;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
-     *
-     * @return string
-     */
     protected function generateCompanyBusinessUnitName(CompanyBusinessUnitTransfer $companyBusinessUnitTransfer): string
     {
         return $this->companyBusinessUnitNameGenerator->generateName($companyBusinessUnitTransfer);

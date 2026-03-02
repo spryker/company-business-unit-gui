@@ -23,10 +23,6 @@ class CompanyBusinessUnitToCompanyUserFormExpander implements CompanyBusinessUni
      */
     protected $companyBusinessUnitToCompanyUserFormDataProvider;
 
-    /**
-     * @param \Symfony\Component\Form\FormTypeInterface $companyBusinessUnitToCompanyUserForm
-     * @param \Spryker\Zed\CompanyBusinessUnitGui\Communication\Form\DataProvider\CompanyBusinessUnitToCompanyUserFormDataProvider $companyBusinessUnitToCompanyUserFormDataProvider
-     */
     public function __construct(
         FormTypeInterface $companyBusinessUnitToCompanyUserForm,
         CompanyBusinessUnitToCompanyUserFormDataProvider $companyBusinessUnitToCompanyUserFormDataProvider
@@ -35,11 +31,6 @@ class CompanyBusinessUnitToCompanyUserFormExpander implements CompanyBusinessUni
         $this->companyBusinessUnitToCompanyUserFormDataProvider = $companyBusinessUnitToCompanyUserFormDataProvider;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return \Symfony\Component\Form\FormBuilderInterface
-     */
     public function expand(FormBuilderInterface $builder): FormBuilderInterface
     {
         $idCompanyBusinessUnit = $builder->getData()->getFkCompanyBusinessUnit();

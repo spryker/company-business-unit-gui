@@ -64,11 +64,6 @@ class CompanyUserBusinessUnitForm extends AbstractType
         $this->addPreSubmitEventListener($builder);
     }
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
@@ -77,11 +72,6 @@ class CompanyUserBusinessUnitForm extends AbstractType
         $resolver->setRequired(static::OPTION_ATTRIBUTES_BUSINESS_UNITS_CHOICES);
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormEvent $formEvent
-     *
-     * @return void
-     */
     public function companyBusinessUnitSearchPreSubmitHandler(FormEvent $formEvent): void
     {
         $data = $formEvent->getData();
@@ -102,11 +92,6 @@ class CompanyUserBusinessUnitForm extends AbstractType
         );
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return void
-     */
     protected function addPreSubmitEventListener(FormBuilderInterface $builder): void
     {
         $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $formEvent): void {
@@ -131,11 +116,6 @@ class CompanyUserBusinessUnitForm extends AbstractType
         return $this;
     }
 
-    /**
-     * @param array $companyBusinessUnitChoices
-     *
-     * @return array
-     */
     protected function getCompanyBusinessUnitFieldParameters(array $companyBusinessUnitChoices = []): array
     {
         return [
@@ -153,9 +133,6 @@ class CompanyUserBusinessUnitForm extends AbstractType
         ];
     }
 
-    /**
-     * @return string
-     */
     protected function getTemplatePath(): string
     {
         return static::TEMPLATE_PATH;

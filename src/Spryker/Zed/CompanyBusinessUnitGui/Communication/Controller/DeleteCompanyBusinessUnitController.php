@@ -43,11 +43,6 @@ class DeleteCompanyBusinessUnitController extends AbstractController
      */
     protected const MESSAGE_ERROR_COMPANY_BUSINESS_UNIT_DELETE = 'You can not delete a business unit "%s" while it contains users';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function indexAction(Request $request): RedirectResponse
     {
         $redirectUrl = Url::generate(static::URL_BUSINESS_UNIT_LIST)->build();

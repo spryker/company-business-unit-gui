@@ -9,10 +9,5 @@ namespace Spryker\Zed\CompanyBusinessUnitGui\Business\CompanyBusinessUnit;
 
 interface CompanyBusinessUnitGuiReaderInterface
 {
-    /**
-     * @param int $idCompanyUser
-     *
-     * @return string|null
-     */
     public function findCompanyBusinessUnitNameByIdCompanyUser(int $idCompanyUser): ?string;
 }

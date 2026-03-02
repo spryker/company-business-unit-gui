@@ -16,9 +16,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class ListCompanyBusinessUnitController extends AbstractController
 {
-    /**
-     * @return array
-     */
     public function indexAction(): array
     {
         $companyBusinessUnitTable = $this->getFactory()
@@ -29,9 +26,6 @@ class ListCompanyBusinessUnitController extends AbstractController
         ]);
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(): JsonResponse
     {
         $table = $this->getFactory()

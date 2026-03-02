@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\CompanyBusinessUnitTransfer;
 
 interface CompanyBusinessUnitNameGeneratorInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
-     *
-     * @return string
-     */
     public function generateName(CompanyBusinessUnitTransfer $companyBusinessUnitTransfer): string;
 }

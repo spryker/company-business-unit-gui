@@ -44,9 +44,6 @@ use Symfony\Component\Form\FormTypeInterface;
  */
 class CompanyBusinessUnitGuiCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Communication\Table\CompanyBusinessUnitTable
-     */
     public function createCompanyBusinessUnitTable(): CompanyBusinessUnitTable
     {
         return new CompanyBusinessUnitTable(
@@ -76,9 +73,6 @@ class CompanyBusinessUnitGuiCommunicationFactory extends AbstractCommunicationFa
         return $this->getFormFactory()->create(CompanyBusinessUnitEditForm::class, $data, $options);
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Communication\Form\DataProvider\CompanyBusinessUnitFormDataProvider
-     */
     public function createCompanyBusinessUnitFormDataProvider(): CompanyBusinessUnitFormDataProvider
     {
         return new CompanyBusinessUnitFormDataProvider(
@@ -87,17 +81,11 @@ class CompanyBusinessUnitGuiCommunicationFactory extends AbstractCommunicationFa
         );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormTypeInterface
-     */
     public function createCompanyUserBusinessUnitForm(): FormTypeInterface
     {
         return new CompanyUserBusinessUnitForm();
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Communication\Form\DataProvider\CompanyUserBusinessUnitFormDataProvider
-     */
     public function createCompanyUserBusinessUnitFormDataProvider(): CompanyUserBusinessUnitFormDataProvider
     {
         return new CompanyUserBusinessUnitFormDataProvider(
@@ -106,17 +94,11 @@ class CompanyBusinessUnitGuiCommunicationFactory extends AbstractCommunicationFa
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Communication\Formatter\CompanyBusinessUnitGuiFormatterInterface
-     */
     public function createCompanyBusinessUnitGuiFormatter(): CompanyBusinessUnitGuiFormatterInterface
     {
         return new CompanyBusinessUnitGuiFormatter($this->createCompanyBusinessUnitNameGenerator());
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function createDeleteCompanyBusinessUnitForm(): FormInterface
     {
         return $this->getFormFactory()->create(DeleteCompanyBusinessUnitForm::class, [], [
@@ -124,25 +106,16 @@ class CompanyBusinessUnitGuiCommunicationFactory extends AbstractCommunicationFa
         ]);
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Dependency\Facade\CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeInterface
-     */
     public function getCompanyBusinessUnitFacade(): CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeInterface
     {
         return $this->getProvidedDependency(CompanyBusinessUnitGuiDependencyProvider::FACADE_COMPANY_BUSINESS_UNIT);
     }
 
-    /**
-     * @return \Orm\Zed\CompanyBusinessUnit\Persistence\SpyCompanyBusinessUnitQuery
-     */
     protected function getCompanyBusinessUnitQuery(): SpyCompanyBusinessUnitQuery
     {
         return $this->getProvidedDependency(CompanyBusinessUnitGuiDependencyProvider::PROPEL_QUERY_COMPANY_BUSINESS_UNIT);
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Dependency\Facade\CompanyBusinessUnitGuiToCompanyFacadeInterface
-     */
     public function getCompanyFacade(): CompanyBusinessUnitGuiToCompanyFacadeInterface
     {
         return $this->getProvidedDependency(CompanyBusinessUnitGuiDependencyProvider::FACADE_COMPANY);
@@ -164,17 +137,11 @@ class CompanyBusinessUnitGuiCommunicationFactory extends AbstractCommunicationFa
         return $this->getProvidedDependency(CompanyBusinessUnitGuiDependencyProvider::COMPANY_BUSINESS_UNIT_EDIT_FORM_EXPANDER_PLUGINS);
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Communication\Generator\CompanyBusinessUnitNameGeneratorInterface
-     */
     public function createCompanyBusinessUnitNameGenerator(): CompanyBusinessUnitNameGeneratorInterface
     {
         return new CompanyBusinessUnitNameGenerator();
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Communication\FormExpander\CompanyBusinessUnitToCustomerBusinessUnitAttachFormExpanderInterface
-     */
     public function createCompanyBusinessUnitToCustomerBusinessUnitAttachFormExpander(): CompanyBusinessUnitToCustomerBusinessUnitAttachFormExpanderInterface
     {
         return new CompanyBusinessUnitToCustomerBusinessUnitAttachFormExpander(
@@ -183,17 +150,11 @@ class CompanyBusinessUnitGuiCommunicationFactory extends AbstractCommunicationFa
         );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormTypeInterface
-     */
     public function createCompanyBusinessUnitToCustomerBusinessUnitAttachForm(): FormTypeInterface
     {
         return new CompanyBusinessUnitToCustomerBusinessUnitAttachForm();
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Communication\Form\DataProvider\CompanyBusinessUnitToCustomerBusinessUnitAttachFormDataProvider
-     */
     public function createCompanyBusinessUnitToCustomerBusinessUnitAttachFormDataProvider(): CompanyBusinessUnitToCustomerBusinessUnitAttachFormDataProvider
     {
         return new CompanyBusinessUnitToCustomerBusinessUnitAttachFormDataProvider(
@@ -202,9 +163,6 @@ class CompanyBusinessUnitGuiCommunicationFactory extends AbstractCommunicationFa
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Communication\FormExpander\CompanyBusinessUnitToCustomerCompanyAttachFormExpanderInterface
-     */
     public function createCompanyBusinessUnitToCustomerCompanyAttachFormExpander(): CompanyBusinessUnitToCustomerCompanyAttachFormExpanderInterface
     {
         return new CompanyBusinessUnitToCustomerCompanyAttachFormExpander(
@@ -213,17 +171,11 @@ class CompanyBusinessUnitGuiCommunicationFactory extends AbstractCommunicationFa
         );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormTypeInterface
-     */
     public function createCompanyBusinessUnitToCustomerCompanyAttachForm(): FormTypeInterface
     {
         return new CompanyBusinessUnitToCustomerCompanyAttachForm();
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Communication\Form\DataProvider\CompanyBusinessUnitToCustomerCompanyAttachFormDataProvider
-     */
     public function createCompanyBusinessUnitToCustomerCompanyAttachFormDataProvider(): CompanyBusinessUnitToCustomerCompanyAttachFormDataProvider
     {
         return new CompanyBusinessUnitToCustomerCompanyAttachFormDataProvider(
@@ -232,9 +184,6 @@ class CompanyBusinessUnitGuiCommunicationFactory extends AbstractCommunicationFa
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Communication\FormExpander\CompanyBusinessUnitToCompanyUserFormExpanderInterface
-     */
     public function createCompanyBusinessUnitToCompanyUserFormExpander(): CompanyBusinessUnitToCompanyUserFormExpanderInterface
     {
         return new CompanyBusinessUnitToCompanyUserFormExpander(
@@ -243,17 +192,11 @@ class CompanyBusinessUnitGuiCommunicationFactory extends AbstractCommunicationFa
         );
     }
 
-    /**
-     * @return \Symfony\Component\Form\FormTypeInterface
-     */
     public function createCompanyBusinessUnitToCompanyUserForm(): FormTypeInterface
     {
         return new CompanyBusinessUnitToCompanyUserForm();
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Communication\Form\DataProvider\CompanyBusinessUnitToCompanyUserFormDataProvider
-     */
     public function createCompanyBusinessUnitToCompanyUserFormDataProvider(): CompanyBusinessUnitToCompanyUserFormDataProvider
     {
         return new CompanyBusinessUnitToCompanyUserFormDataProvider(

@@ -20,9 +20,6 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
  */
 class CompanyBusinessUnitGuiBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Business\CompanyBusinessUnit\CompanyBusinessUnitGuiReaderInterface
-     */
     public function createCompanyBusinessUnitGuiReader(): CompanyBusinessUnitGuiReaderInterface
     {
         return new CompanyBusinessUnitGuiReader(
@@ -35,9 +32,6 @@ class CompanyBusinessUnitGuiBusinessFactory extends AbstractBusinessFactory
         return new CompanyUserTableDataExpander($this->getCompanyBusinessUnitFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\CompanyBusinessUnitGui\Dependency\Facade\CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeInterface
-     */
     public function getCompanyBusinessUnitFacade(): CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeInterface
     {
         return $this->getProvidedDependency(CompanyBusinessUnitGuiDependencyProvider::FACADE_COMPANY_BUSINESS_UNIT);

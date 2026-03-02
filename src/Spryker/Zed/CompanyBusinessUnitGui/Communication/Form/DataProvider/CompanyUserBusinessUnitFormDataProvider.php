@@ -33,10 +33,6 @@ class CompanyUserBusinessUnitFormDataProvider
      */
     protected $companyBusinessUnitNameGenerator;
 
-    /**
-     * @param \Spryker\Zed\CompanyBusinessUnitGui\Dependency\Facade\CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeInterface $companyBusinessUnitFacade
-     * @param \Spryker\Zed\CompanyBusinessUnitGui\Communication\Generator\CompanyBusinessUnitNameGeneratorInterface $generator
-     */
     public function __construct(
         CompanyBusinessUnitGuiToCompanyBusinessUnitFacadeInterface $companyBusinessUnitFacade,
         CompanyBusinessUnitNameGeneratorInterface $generator
@@ -67,11 +63,6 @@ class CompanyUserBusinessUnitFormDataProvider
         return [];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CompanyBusinessUnitTransfer $companyBusinessUnitTransfer
-     *
-     * @return string
-     */
     protected function generateCompanyBusinessUnitName(CompanyBusinessUnitTransfer $companyBusinessUnitTransfer): string
     {
         return $this->companyBusinessUnitNameGenerator->generateName($companyBusinessUnitTransfer);

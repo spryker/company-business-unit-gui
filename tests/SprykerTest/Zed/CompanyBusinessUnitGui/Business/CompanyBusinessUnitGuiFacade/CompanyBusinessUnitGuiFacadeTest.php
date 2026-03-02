@@ -33,9 +33,6 @@ class CompanyBusinessUnitGuiFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testFindCompanyBusinessUnitNameFindCompanyBusinessUnitNameByIdCompanyUser(): void
     {
         // Arrange
