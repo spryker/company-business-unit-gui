@@ -12,6 +12,8 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 class CompanyBusinessUnitGuiConfig extends AbstractBundleConfig
 {
     /**
+     * @api
+     *
      * @see \Spryker\Zed\CompanyUserGui\CompanyUserGuiConfig
      *
      * @var string

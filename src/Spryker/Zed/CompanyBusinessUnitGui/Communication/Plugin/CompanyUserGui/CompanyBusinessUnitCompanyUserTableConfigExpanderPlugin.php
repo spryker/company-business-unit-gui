@@ -19,6 +19,8 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 class CompanyBusinessUnitCompanyUserTableConfigExpanderPlugin extends AbstractPlugin implements CompanyUserTableConfigExpanderPluginInterface
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const COL_COMPANY_BUSINESS_UNIT_NAME = 'company_business_unit_name';
