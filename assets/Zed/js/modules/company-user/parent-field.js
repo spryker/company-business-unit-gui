@@ -18,13 +18,13 @@ var companyFieldPath = 'select#company-user_fk_company';
 var companyBusinessUnitFieldPath = 'select#company-user_fk_company_business_unit';
 
 function initialize() {
-    var companyBusinessUnitField = new companyBusinessUnitFieldHandler();
+    var companyBusinessUnitField = new CompanyBusinessUnitFieldHandler();
 
     companyBusinessUnitField.init();
     companyBusinessUnitField.toogleCompanyBusinessUnitVisibility();
 }
 
-function companyBusinessUnitFieldHandler() {
+function CompanyBusinessUnitFieldHandler() {
     var $companyField = $(companyFieldPath);
     var $companyBusinessUnitField = $(companyBusinessUnitFieldPath);
 
