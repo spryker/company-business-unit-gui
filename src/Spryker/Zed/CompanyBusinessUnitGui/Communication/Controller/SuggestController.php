@@ -52,10 +52,29 @@ class SuggestController extends AbstractController
         return $this->jsonResponse($response);
     }
 
+    public function allCompaniesAction(Request $request): JsonResponse
+    {
+        $companyBusinessUnitCriteriaFilterTransfer = (new CompanyBusinessUnitCriteriaFilterTransfer())
+            ->setName((string)$request->query->get(static::PARAM_TERM) ?: null)
+            ->setFilter((new FilterTransfer())->setLimit($this->getFactory()->getConfig()->getCompanyBusinessUnitSuggestionLimit()))
+            ->setWithoutExpanders(true);
+
+        return $this->jsonResponse($this->getSuggestions($companyBusinessUnitCriteriaFilterTransfer));
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
     protected function executeIndexAction(Request $request): array
     {
-        $companyBusinessUnitCriteriaFilterTransfer = $this->createCompanyBusinessUnitCriteriaFilterTransfer($request);
+        return $this->getSuggestions($this->createCompanyBusinessUnitCriteriaFilterTransfer($request));
+    }
 
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getSuggestions(CompanyBusinessUnitCriteriaFilterTransfer $companyBusinessUnitCriteriaFilterTransfer): array
+    {
         $companyBusinessUnitCollectionTransfer = $this->getFactory()
             ->getCompanyBusinessUnitFacade()
             ->getCompanyBusinessUnitCollection($companyBusinessUnitCriteriaFilterTransfer);
